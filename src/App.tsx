@@ -3,14 +3,13 @@ import { Text, View, TouchableOpacity } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from "redux";
-import { actionCreators } from "./state/index";
-
+import { actionCreators, State } from "./state/index";
 function App() {
-  const account = useSelector((state: any) => state.account)
+  const account = useSelector((state: State) => state.account)
   const dispatch = useDispatch()
 
 
-  const { depositMoney, withdrawMoney } = bindActionCreators(actionCreators, dispatch)
+  const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
 
   return (
     <View>
@@ -45,6 +44,16 @@ function App() {
           onPress={() => withdrawMoney(10)}
         >
           <Text style={{ textAlign: 'center', marginTop: 10 }}>Descrease</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'red',
+            height: 50,
+            width: 100,
+          }}
+          onPress={() => bankrupt()}
+        >
+          <Text style={{ textAlign: 'center', marginTop: 10 }}>bancrupt</Text>
         </TouchableOpacity>
       </View>
       <Text

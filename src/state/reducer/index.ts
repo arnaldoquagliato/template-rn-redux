@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
 import reducerAccount from "./accountReduce";
 
-const reducers = combineReducers({
+export const reducers = combineReducers({
   account: reducerAccount
 })
 
-export default reducers
+export type State = ReturnType<typeof reducers>
