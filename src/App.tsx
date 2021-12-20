@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from "redux";
 import { actionCreators, State } from "./state/index";
-function App() {
+function Home() {
   const account = useSelector((state: State) => state.account)
   const dispatch = useDispatch()
 
@@ -63,4 +63,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
