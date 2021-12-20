@@ -1,15 +1,19 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { useSelector, useDispatch } from 'react-redux'
-import { bindActionCreators } from "redux";
-import { actionCreators, State } from "./state/index";
+import { actionCreators, State } from '../state/index';
+import { Teste } from './Teste';
+
 function Home() {
-  const account = useSelector((state: State) => state.account)
-  const dispatch = useDispatch()
+  const account = useSelector((state: State) => state.account);
+  const dispatch = useDispatch();
 
-
-  const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
+  const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   return (
     <View>
@@ -19,7 +23,7 @@ function Home() {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          marginVertical: 40
+          marginVertical: 40,
         }}
       >
         <TouchableOpacity
@@ -31,9 +35,7 @@ function Home() {
           }}
           onPress={() => depositMoney(10)}
         >
-          <Text
-            style={{ textAlign: 'center', marginTop: 10 }}
-          >Increase</Text>
+          <Text style={{ textAlign: 'center', marginTop: 10 }}>Increase</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -56,9 +58,7 @@ function Home() {
           <Text style={{ textAlign: 'center', marginTop: 10 }}>bancrupt</Text>
         </TouchableOpacity>
       </View>
-      <Text
-        style={{ textAlign: 'center' }}
-      >Valor: {account}</Text>
+      <Text style={{ textAlign: 'center' }}>Valor: {account}</Text>
     </View>
   );
 }

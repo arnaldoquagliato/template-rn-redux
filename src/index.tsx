@@ -1,13 +1,13 @@
-import React from 'react'
-import Home from './App';
-import { Provider } from "react-redux";
-import { store } from './state/store'
+import React from 'react';
+import { Provider } from 'react-redux';
 
+import Routes from './route/navigation.js';
+import { store } from './state/store';
 
-export const App = () => {
+export function App() {
   return (
     <Provider store={store}>
-      <Home />
+      <Routes />
     </Provider>
   );
 }
