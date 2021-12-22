@@ -3,8 +3,8 @@ import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { actionCreators } from '../domain/state/user';
-import { List } from './List';
+import { List } from '../../components/List';
+import { actionCreators } from '../../domain/state/user';
 
 function Home() {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ function Home() {
       id: 0,
     });
   };
+
   return (
     <View>
       <View style={{ alignItems: 'center', marginTop: 50 }}>

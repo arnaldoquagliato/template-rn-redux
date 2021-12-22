@@ -9,5 +9,5 @@ export type UserListState = {
 
 export type UserAction = {
   type: string;
-  user: IUser;
+  data: IUser;
 };

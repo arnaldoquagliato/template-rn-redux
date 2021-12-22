@@ -5,16 +5,18 @@ import { bindActionCreators } from 'redux';
 
 import { State } from '../domain/state/state/store-factory';
 import { actionCreators } from '../domain/state/user';
+import { IUser } from '../types/domain';
 
 export function List() {
   const user = useSelector((state: State) => state.users);
+
   const dispatch = useDispatch();
   const { removeUser } = bindActionCreators(actionCreators, dispatch);
 
   return (
     <FlatList
       data={user.users}
-      renderItem={({ item }: { item: any }) => {
+      renderItem={({ item }: { item: IUser }) => {
         const { name, id } = item;
         return (
           <TouchableOpacity

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { store } from './domain/state/state/store-factory';
-import Routes from './route/navigation.js';
+import storeFactory from './domain/state/state/store-factory';
+import Routes from './routes/navigation.js';
+
+const store = storeFactory();
 
 export function App() {
   return (

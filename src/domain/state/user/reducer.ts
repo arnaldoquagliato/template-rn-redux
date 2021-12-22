@@ -13,7 +13,7 @@ const userReducer = (
     case actionTypes.CREATE_USER:
       const newUser: IUser = {
         id: Math.random(),
-        name: action.user.name,
+        name: action.data.name,
       };
 
       return {
@@ -22,7 +22,7 @@ const userReducer = (
       };
     case actionTypes.DELETE_USER:
       const updatedUser: IUser[] = state.users.filter(
-        (user) => user.id !== action.user.id
+        (user) => user.id !== action.data.id
       );
       return {
         ...state,

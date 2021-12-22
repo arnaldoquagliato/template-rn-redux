@@ -14,7 +14,7 @@ module.exports = {
     'prettier',
     'eslint-plugin-import-helpers',
   ],
-  ignorePatterns: ['metro.config.js', 'babel.config.js', 'index.js'],
+  ignorePatterns: ['metro.config.js', 'babel.config.js', 'index.js', '*.js'],
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/function-component-definition': [
@@ -24,7 +24,13 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/no-unused-prop-types': 'off',
+    'no-case-declarations': 'off',
+    'default-param-last': 'off',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/indent': [2, 2],
+
     'import/extensions': [
       'error',
       'ignorePackages',

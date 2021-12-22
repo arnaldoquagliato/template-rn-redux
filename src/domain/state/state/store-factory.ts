@@ -9,4 +9,6 @@ const reducers = combineReducers({
 
 export type State = ReturnType<typeof reducers>;
 
-export const store = createStore(reducers, {}, applyMiddleware(thunk));
+const storeFactory = () => createStore(reducers, applyMiddleware(thunk));
+
+export default storeFactory;
