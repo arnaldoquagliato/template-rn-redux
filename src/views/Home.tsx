@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-
-import { List } from './List';
+import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { actionCreators } from '../domain/state/user/';
-import { State } from '../domain/state/state/store-factory';
-import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators } from '../domain/state/user';
+import { List } from './List';
 
 function Home() {
-  const user = useSelector((state: State) => state.users);
-
   const dispatch = useDispatch();
   const { addUser } = bindActionCreators(actionCreators, dispatch);
 
@@ -33,6 +29,7 @@ function Home() {
             borderWidth: 1,
             borderColor: '#000',
             borderRadius: 15,
+            textAlign: 'center',
           }}
           value={username}
         />

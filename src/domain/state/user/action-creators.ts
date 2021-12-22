@@ -1,12 +1,14 @@
+import { Dispatch } from 'redux';
+
 import { IUser, UserAction } from '../../../types/domain';
 import { actionTypes } from './action-types';
-import { Dispatch } from 'redux';
 import { AddUserAction, RemoveUserAction, UpdateUserAction } from './actions';
+
 export function addUser(user: IUser) {
   return (dispatch: Dispatch<AddUserAction>) => {
     dispatch({
       type: actionTypes.CREATE_USER,
-      user: user,
+      user,
     });
   };
   // const action: UserAction = {
@@ -19,7 +21,7 @@ export function addUser(user: IUser) {
 export function removeUser(user: IUser) {
   const action: UserAction = {
     type: actionTypes.DELETE_USER,
-    user: user,
+    user,
   };
   return simulateRequest(action);
 }

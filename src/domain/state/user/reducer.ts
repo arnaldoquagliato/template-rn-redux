@@ -28,8 +28,9 @@ const userReducer = (
         ...state,
         users: updatedUser,
       };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default userReducer;
