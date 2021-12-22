@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
+import { store } from './domain/state/state/store-factory';
 import Routes from './route/navigation.js';
-import { store } from './state/store';
 
 export function App() {
   return (

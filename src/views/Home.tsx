@@ -1,64 +1,63 @@
-import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+
+import { List } from './List';
 import { bindActionCreators } from 'redux';
 
-import { actionCreators, State } from '../state/index';
-import { Teste } from './Teste';
+import { actionCreators } from '../domain/state/user/';
+import { State } from '../domain/state/state/store-factory';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Home() {
-  const account = useSelector((state: State) => state.account);
+  const user = useSelector((state: State) => state.users);
+
   const dispatch = useDispatch();
+  const { addUser } = bindActionCreators(actionCreators, dispatch);
 
-  const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const [username, setUsername] = useState('');
 
+  const handleInput = () => {
+    setUsername('');
+    addUser({
+      name: username,
+      id: 0,
+    });
+  };
   return (
     <View>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginVertical: 40,
-        }}
-      >
+      <View style={{ alignItems: 'center', marginTop: 50 }}>
+        <TextInput
+          onChangeText={setUsername}
+          style={{
+            width: '80%',
+            borderWidth: 1,
+            borderColor: '#000',
+            borderRadius: 15,
+          }}
+          value={username}
+        />
         <TouchableOpacity
           style={{
-            marginRight: 10,
-            backgroundColor: 'red',
+            marginVertical: 30,
+            backgroundColor: '#b8b4a9',
+            width: '80%',
             height: 50,
-            width: 100,
+            borderRadius: 15,
           }}
-          onPress={() => depositMoney(10)}
+          onPress={() => handleInput()}
         >
-          <Text style={{ textAlign: 'center', marginTop: 10 }}>Increase</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: 'red',
-            height: 50,
-            width: 100,
-          }}
-          onPress={() => withdrawMoney(10)}
-        >
-          <Text style={{ textAlign: 'center', marginTop: 10 }}>Descrease</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: 'red',
-            height: 50,
-            width: 100,
-          }}
-          onPress={() => bankrupt()}
-        >
-          <Text style={{ textAlign: 'center', marginTop: 10 }}>bancrupt</Text>
+          <Text
+            style={{
+              textAlign: 'center',
+              textAlignVertical: 'center',
+              marginTop: 13,
+            }}
+          >
+            + USUÁRIO
+          </Text>
         </TouchableOpacity>
       </View>
-      <Text style={{ textAlign: 'center' }}>Valor: {account}</Text>
+      <List />
     </View>
   );
 }
